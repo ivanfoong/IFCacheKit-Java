@@ -139,62 +139,62 @@ public class DiskCacheTest {
         assertEquals(3, diskCache.size());
     }
 
-    @Test
-    public void testPutPerformance() throws Exception {
-        final long startTime = System.currentTimeMillis();
-
-        final int count = 10000;
-
-        for (int i = 0; i < count; i++) {
-            final long iStartTime = System.currentTimeMillis();
-            final String key = String.format("key.%d", i);
-            final String value = String.format("value.%d", i);
-            diskCache.put(key, value);
-            final long iStopTime = System.currentTimeMillis();
-            final long iRunTime = iStopTime - iStartTime;
-            System.out.println(String.format("%d Run time: %d", i, iRunTime));
-        }
-
-        final long stopTime = System.currentTimeMillis();
-
-        assertEquals(count, diskCache.mFileIndexes.size());
-
-        final long runTime = stopTime - startTime;
-        System.out.println("Run time: " + runTime);
-
-        final File[] files = diskCacheFolder.listFiles();
-        System.out.printf("Number of cache files, %d", files.length);
-    }
-
-    @Test
-    public void putPerformance2() throws IOException {
-        final DiskCache<ComplexObject, ComplexObject> complexObjectDiskCache = new DiskCache<ComplexObject, ComplexObject>(diskCacheFolder);
-
-        final long startTime = System.currentTimeMillis();
-
-        final int count = 10000;
-
-        for (int i = 0; i < count; i++) {
-            final long iStartTime = System.currentTimeMillis();
-            final ComplexObject key = new ComplexObject(i);
-            final ComplexObject value = new ComplexObject(i);
-            complexObjectDiskCache.put(key, value);
-            final long iStopTime = System.currentTimeMillis();
-            final long iRunTime = iStopTime - iStartTime;
-            System.out.println(String.format("%d Run time: %d", i, iRunTime));
-        }
-
-        final long stopTime = System.currentTimeMillis();
-
-        assertEquals(count, complexObjectDiskCache.mFileIndexes.size());
-
-        final long runTime = stopTime - startTime;
-        System.out.println("Run time: " + runTime);
-
-        final File[] files = diskCacheFolder.listFiles();
-        System.out.printf("Number of cache files, %d", files.length);
-    }
-
+//    @Test
+//    public void testPutPerformance() throws Exception {
+//        final long startTime = System.currentTimeMillis();
+//
+//        final int count = 10000;
+//
+//        for (int i = 0; i < count; i++) {
+//            final long iStartTime = System.currentTimeMillis();
+//            final String key = String.format("key.%d", i);
+//            final String value = String.format("value.%d", i);
+//            diskCache.put(key, value);
+//            final long iStopTime = System.currentTimeMillis();
+//            final long iRunTime = iStopTime - iStartTime;
+//            System.out.println(String.format("%d Run time: %d", i, iRunTime));
+//        }
+//
+//        final long stopTime = System.currentTimeMillis();
+//
+//        assertEquals(count, diskCache.mFileIndexes.size());
+//
+//        final long runTime = stopTime - startTime;
+//        System.out.println("Run time: " + runTime);
+//
+//        final File[] files = diskCacheFolder.listFiles();
+//        System.out.printf("Number of cache files, %d", files.length);
+//    }
+//
+//    @Test
+//    public void putPerformance2() throws IOException {
+//        final DiskCache<ComplexObject, ComplexObject> complexObjectDiskCache = new DiskCache<ComplexObject, ComplexObject>(diskCacheFolder);
+//
+//        final long startTime = System.currentTimeMillis();
+//
+//        final int count = 10000;
+//
+//        for (int i = 0; i < count; i++) {
+//            final long iStartTime = System.currentTimeMillis();
+//            final ComplexObject key = new ComplexObject(i);
+//            final ComplexObject value = new ComplexObject(i);
+//            complexObjectDiskCache.put(key, value);
+//            final long iStopTime = System.currentTimeMillis();
+//            final long iRunTime = iStopTime - iStartTime;
+//            System.out.println(String.format("%d Run time: %d", i, iRunTime));
+//        }
+//
+//        final long stopTime = System.currentTimeMillis();
+//
+//        assertEquals(count, complexObjectDiskCache.mFileIndexes.size());
+//
+//        final long runTime = stopTime - startTime;
+//        System.out.println("Run time: " + runTime);
+//
+//        final File[] files = diskCacheFolder.listFiles();
+//        System.out.printf("Number of cache files, %d", files.length);
+//    }
+//
 //    @Test
 //    public void testGenerateFilename() throws Exception {
 //        assertTrue(false);
